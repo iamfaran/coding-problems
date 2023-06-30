@@ -1,19 +1,14 @@
-// () => true
-// ( => false
-// ) => false
-// (()) => true
-// (() => false
-// (())() => true
-// (()()) => true
-// (()() => false
-//(())((()())()) =>  true
+function uniqueInOrder(str) {
+  debugger;
+  let arr = str.split("");
 
-function checkParenthesis(str) {
-  let count = 0;
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === "(") count++;
-    if (str[i] === ")") count--;
-    if (count < 0) return false;
-  }
-  return count === 0;
+  // + 1 and at the end last item gets pushed
+  // because it is not equal to the undefined
+
+  // -1 if we want to push the first instance
+  return arr.filter((item, index) => {
+    return item !== arr[index + 1];
+  });
 }
+
+console.log(uniqueInOrder("AAAABBBCCDAABBB")); // ["A", "B", "C", "D", "A", "B"]
